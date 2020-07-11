@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Tbody from '../tbody/Tbody'
-import Container from '../bookContainer/Container'
-
+import './TableStyle.scss'
 class table extends Component {
 
     render() {
-        console.log(this.props);
         const { contacts } = this.props
         return (
             <div id="table" className="table-responsive">
