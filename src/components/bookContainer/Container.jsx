@@ -37,7 +37,7 @@ class Container extends Component {
         let filtered = this.state.contacts.filter(item => item.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
         return (
             <div className="root">
-                <input type="text" name="search" onChange={this.handelChange} value={search} />
+                <input type="text" name="search" onChange={this.handelChange} value={search} placeholder="search" />
                 <div className="all">
                     <Table contacts={filtered} />
                     <Form />
