@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import Tbody from '../tbody/Tbody'
+import Container from '../bookContainer/Container'
 
 class table extends Component {
+
     render() {
+        console.log(this.props);
+        const { contacts } = this.props
         return (
-            <div id="table" class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead class="thead text-primary bg-light">
-                            <tr>
-                                <th>#</th>
-                                <th>name</th>
-                                <th>surname</th>
-                                <th>phone number</th>
-                                <th>email</th>
-                                <th>address</th>
-                                <th>date of birth</th>
-                                <th>details</th>
-                                <th id="action">action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <Tbody/>
-                        </tbody>
-                    </table>
-                <button  class="btn btn-outline-info mx-4 ">add</button>
-                <button  class="btn btn-outline-dark mx-1 ">cancel</button>
+            <div id="table" className="table-responsive">
+                <table className="table table-striped table-hover">
+                    <thead className="thead text-primary bg-light">
+                        <tr>
+                            <th>#</th>
+                            <th>name</th>
+                            <th>surname</th>
+                            <th>phone number</th>
+                            <th>email</th>
+                            <th>address</th>
+                            <th>date of birth</th>
+                            <th>details</th>
+                            <th id="action">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {contacts.map((item) => (
+                            <Tbody key={item.id} contact={item} />))}
+                    </tbody>
+                </table>
+                <button className="btn btn-outline-info mx-4 ">add</button>
+                <button className="btn btn-outline-dark mx-1 ">cancel</button>
             </div>
         );
     }

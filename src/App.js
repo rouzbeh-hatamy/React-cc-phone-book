@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Table from './components/Table/table'
+import Container from './components/bookContainer/Container'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Table/>
-      </div>
+      <>
+        <Container />
+      </>
     );
   }
 }

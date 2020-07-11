@@ -1,0 +1,12 @@
+.all {
+  display: flex;
+}
+.root {
+  background-color: #adadad;
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 200px;
+    align-self: center;
+  }
+}
