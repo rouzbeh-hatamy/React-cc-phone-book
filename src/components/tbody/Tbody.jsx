@@ -15,7 +15,7 @@ class Tbody extends Component {
         <td>{contact.address}</td>
         <td>{contact.birthday}</td>
         <td>{contact.details}</td>
-        <td className="buttons"><button type="button" className="btn btn-danger">delete</button>
+        <td className="buttons"><button type="button" onClick={this.props.handleDelete} className="btn btn-danger">delete</button>
           <button type="button" className="btn btn-primary">edit</button> </td>
       </tr>
 

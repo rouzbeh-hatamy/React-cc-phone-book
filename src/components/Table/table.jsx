@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Tbody from '../tbody/Tbody'
 import './TableStyle.scss'
 class table extends Component {
-
+   
+   
     render() {
         const { contacts } = this.props
         return (
@@ -23,7 +24,7 @@ class table extends Component {
                     </thead>
                     <tbody>
                         {contacts.map((item) => (
-                            <Tbody key={item.id} contact={item} />))}
+                            <Tbody key={item.id} contact={item} handleDelete={() => this.props.handleDelete(item.id)} />))}
                     </tbody>
                 </table>
                 <button className="btn btn-outline-info mx-4 ">add</button>
