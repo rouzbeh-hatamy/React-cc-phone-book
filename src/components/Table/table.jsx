@@ -5,7 +5,7 @@ class table extends Component {
    
    
     render() {
-        const { contacts } = this.props
+        const { contacts,showForm,toggleForm } = this.props
         return (
             <div id="table" className="table-responsive">
                 <table className="table table-striped table-hover">
@@ -27,8 +27,7 @@ class table extends Component {
                             <Tbody key={item.id} contact={item} handleDelete={() => this.props.handleDelete(item.id)} />))}
                     </tbody>
                 </table>
-                <button className="btn btn-outline-info mx-4 ">add</button>
-                <button className="btn btn-outline-dark mx-1 ">cancel</button>
+                <button className="btn btn-outline-info mx-4 " onClick={toggleForm}>{showForm?'close':'add'}</button>
             </div>
         );
     }
