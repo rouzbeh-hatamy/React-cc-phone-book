@@ -3,13 +3,14 @@
 }
 .contain {
   background-image: url(./bg.jpg);
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
+  font-family: Shabnam;
   input {
     width: 200px;
     align-self: center;
@@ -53,4 +54,17 @@
   100% {
     transform: translateX(250px);
   }
+}
+@font-face {
+  font-family: Shabnam;
+  src: url("https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.eot");
+  src: url("https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.woff2")
+      format("woff2"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.woff")
+      format("woff"),
+    url("https://cdn.fontcdn.ir/Font/Persian/Shabnam/Shabnam.ttf")
+      format("truetype");
+  font-weight: normal;
 }

@@ -13,12 +13,11 @@ class table extends Component {
                         <tr>
                             <th>#</th>
                             <th>name</th>
-                            <th>surname</th>
+                            <th>username</th>
                             <th>phone number</th>
                             <th>email</th>
-                            <th>address</th>
-                            <th>date of birth</th>
-                            <th>details</th>
+                            <th>company</th>
+                            <th>website</th>
                             <th id="action">action</th>
                         </tr>
                     </thead>

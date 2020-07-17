@@ -4,43 +4,18 @@ import Form from '../form/Form'
 import './styleContainer.scss'
 class Container extends Component {
     state = {
-        contacts: [
-            {
-                id: 1,
-                name: "ali",
-                surname: "ahmadi",
-                phoneNumber: "09333333",
-                email: "ali@gmail.com",
-                address: "Tehran",
-                birthday: "02/02/02",
-                details: "komij",
-            },
-            {
-                id: 2,
-                name: "reza",
-                surname: "ahmadi",
-                phoneNumber: "09333333",
-                email: "ali@gmail.com",
-                address: "Tehran",
-                birthday: "02/02/02",
-                details: "komij",
-            }, 
-            {
-                id: 3,
-                name: "hamid",
-                surname: "ahmadi",
-                phoneNumber: "09333333",
-                email: "ali@gmail.com",
-                address: "Tehran",
-                birthday: "02/02/02",
-                details: "komij",
-            },
-        ],
+        contacts: [],
         search: '',
         showForm: false,
         animateForm: null,
     };
-
+    componentDidMount(){
+        fetch('https://jsonplaceholder.ir/users/')
+        .then(response => response.json())
+        .then(data =>{this.setState({contacts:data})
+    })
+    
+    }
     handelChange = event => {
         const { name, value } = event.target;
         this.setState({ [name]: value })

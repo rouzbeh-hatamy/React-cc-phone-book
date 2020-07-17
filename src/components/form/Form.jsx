@@ -4,12 +4,11 @@ import './Form.scss'
 class Form extends Component {
     state = {
         name: '',
-        surname: '',
-        phoneNumber: '',
+        username: '',
+        phone: '',
         email: '',
-        address: '',
-        birthday: '',
-        details: '',
+        company: '',
+        website: '',
     }
     handleChange = (event) => {
         const { name, value } = event.target;
@@ -18,19 +17,19 @@ class Form extends Component {
     }
     handlesubmit = (event) => {
         event.preventDefault();
-        const { name, surname, phoneNumber, email, address, birthday, details } = this.state
-        if ((name && surname && phoneNumber && email && address && birthday && details) === '') {
+        const { name, username, phone, email, company, website } = this.state
+        if ((name && username && phone && email && company && website) === '') {
             alert(' form cannot be empty')
         } else {
             const id = this.props.lastId + 1
-            const newContact = { id, name, surname, phoneNumber, email, address, birthday, details }
+            const newContact = { id, name, username, phone, email, company, website }
             this.props.handleAdd(newContact)
             this.props.toggleForm();
         }
 
     }
     render() {
-        const { name, surname, phoneNumber, email, address, birthday, details } = this.state
+        const { name, username, phone, email, company, website } = this.state
         return (
             <div id="form">
                 <form id="form_contact" onSubmit={this.handlesubmit}>
@@ -45,13 +44,13 @@ class Form extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="id_last_name">surname</label>
+                        <label htmlFor="id_last_name">username</label>
                         <input
                             type="text"
                             className="form-control"
                             id="id_last_name"
-                            name="surname"
-                            onChange={this.handleChange} value={surname}
+                            name="username"
+                            onChange={this.handleChange} value={username}
                         />
                     </div>
                     <div className="form-group">
@@ -60,8 +59,8 @@ class Form extends Component {
                             type="phone"
                             className="form-control"
                             id="id_Phone_number"
-                            name="phoneNumber"
-                            onChange={this.handleChange} value={phoneNumber}
+                            name="phone"
+                            onChange={this.handleChange} value={phone}
                         /></div>
                     <div className="form-group">
                         <label htmlFor="id_email">email</label>
@@ -73,34 +72,25 @@ class Form extends Component {
                             onChange={this.handleChange} value={email}
                         />
                     </div>
+                    
                     <div className="form-group">
-                        <label htmlFor="id_address">address</label>
+                        <label htmlFor="id_company">company name</label>
                         <input
                             type="text"
                             className="form-control"
-                            id="id_address"
-                            name="address"
-                            onChange={this.handleChange} value={address}
+                            id="id_company"
+                            name="company"
+                            onChange={this.handleChange} value={company}
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="id_birthday">date of birth</label>
-                        <input
-                            type="date"
-                            className="form-control"
-                            id="id_birthday"
-                            name="birthday"
-                            onChange={this.handleChange} value={birthday}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="id_details">details</label>
+                        <label htmlFor="id_website">website</label>
                         <input
                             type="text"
                             className="form-control"
-                            id="id_details"
-                            name="details"
-                            onChange={this.handleChange} value={details}
+                            id="id_website"
+                            name="website"
+                            onChange={this.handleChange} value={website}
                         />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>

@@ -9,12 +9,11 @@ class Tbody extends Component {
       <tr key={contact.id}>
         <td>{contact.id}</td>
         <td>{contact.name}</td>
-        <td>{contact.surname}</td>
-        <td>{contact.phoneNumber}</td>
+        <td>{contact.username}</td>
+        <td>{contact.phone}</td>
         <td>{contact.email}</td>
-        <td>{contact.address}</td>
-        <td>{contact.birthday}</td>
-        <td>{contact.details}</td>
+        <td>{contact.company}</td>
+        <td>{contact.website}</td>
         <td className="buttons"><button type="button" onClick={this.props.handleDelete} className="btn btn-danger">delete</button>
           <button type="button" className="btn btn-primary">edit</button> </td>
       </tr>
