@@ -26,7 +26,7 @@ class table extends Component {
                             <Tbody key={item.id} contact={item} handleDelete={() => this.props.handleDelete(item.id)} />))}
                     </tbody>
                 </table>
-                <button className="btn btn-outline-info mx-4 " onClick={toggleForm}>{showForm?'close':'add'}</button>
+                <button className="btn btn-success mx-4 " onClick={toggleForm}>{showForm?'close':'add'}</button>
             </div>
         );
     }

@@ -2,11 +2,15 @@
   display: flex;
 }
 .contain {
-  background-image: url(./bg.jpg);
   min-height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: linear-gradient(
+    to right top,
+    #006775,
+    #00858d,
+    #00a49c,
+    #00c3a1,
+    #00e29e
+  );
   background-attachment: fixed;
   display: flex;
   flex-direction: column;

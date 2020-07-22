@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Form.scss'
+import './Form.scss';
+import Swal from 'sweetalert2';
 
 class Form extends Component {
     state = {
@@ -15,24 +16,31 @@ class Form extends Component {
         this.setState({ [name]: value });
 
     }
-    handlesubmit = (event) => {
-        event.preventDefault();
-        const { name, username, phone, email, company, website } = this.state
-        if ((name && username && phone && email && company && website) === '') {
-            alert(' form cannot be empty')
-        } else {
-            const id = this.props.lastId + 1
-            const newContact = { id, name, username, phone, email, company, website }
-            this.props.handleAdd(newContact)
-            this.props.toggleForm();
-        }
-
+    submitForm=(e)=>{
+        Swal.fire(
+            this.handlesubmit(e),
+            'اضافه شد',
+            'success'
+          )
     }
+            handlesubmit = (event) => {
+                event.preventDefault();
+                const { name, username, phone, email, company, website } = this.state
+                if ((name && username && phone && email && company && website) === '') {
+                    alert(' form cannot be empty')
+                } else {
+                    const id = this.props.lastId + 1
+                    const newContact = { id, name, username, phone, email, company, website }
+                    this.props.handleAdd(newContact)
+                    this.props.toggleForm();
+                }
+        
+            }
     render() {
         const { name, username, phone, email, company, website } = this.state
         return (
             <div id="form">
-                <form id="form_contact" onSubmit={this.handlesubmit}>
+                <form id="form_contact" onSubmit={this.submitForm}>
                     <div className="form-group">
                         <label htmlFor="id_name">name</label>
                         <input
