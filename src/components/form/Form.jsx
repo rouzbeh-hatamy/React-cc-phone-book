@@ -4,43 +4,59 @@ import Swal from 'sweetalert2';
 
 class Form extends Component {
     state = {
+        id:0,
         name: '',
         username: '',
         phone: '',
         email: '',
         company: '',
         website: '',
+        ids: null
     }
     handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
 
     }
-    submitForm=(e)=>{
-        Swal.fire(
-            this.handlesubmit(e),
-            'اضافه شد',
-            'success'
-          )
-    }
-            handlesubmit = (event) => {
-                event.preventDefault();
-                const { name, username, phone, email, company, website } = this.state
-                if ((name && username && phone && email && company && website) === '') {
-                    alert(' form cannot be empty')
-                } else {
-                    const id = this.props.lastId + 1
-                    const newContact = { id, name, username, phone, email, company, website }
-                    this.props.handleAdd(newContact)
-                    this.props.toggleForm();
-                }
+    componentDidMount() {
+        const { name, username, phone, email, company, website, id } = this.props.editContact
         
-            }
+        this.setState({ name, username, phone, email, company, website, id })
+    }
+    
+    componentWillUpdate(){
+        let ids = this.props.contacts.map(item => item.id)
+        if(this.state.ids ===null){
+        this.setState({ids:ids})}
+    }
+    
+    handlesubmit = (event) => {
+        event.preventDefault();
+        const { id, name, username, phone, email, company, website, ids } = this.state
+        const newContact = { id, name, username, phone, email, company, website }
+        if ((name && username && phone && email && company && website) === '') {
+            alert(' form cannot be empty')
+        } else if (ids.includes(newContact.id)) {
+            this.props.updateContact(newContact)
+            this.props.toggleForm()
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'به روز رساني شد',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else {
+            this.props.handleAdd(newContact)
+            this.props.toggleForm();
+        }
+
+    }
     render() {
         const { name, username, phone, email, company, website } = this.state
         return (
             <div id="form">
-                <form id="form_contact" onSubmit={this.submitForm}>
+                <form id="form_contact" onSubmit={this.handlesubmit}>
                     <div className="form-group">
                         <label htmlFor="id_name">name</label>
                         <input
@@ -80,7 +96,7 @@ class Form extends Component {
                             onChange={this.handleChange} value={email}
                         />
                     </div>
-                    
+
                     <div className="form-group">
                         <label htmlFor="id_company">company name</label>
                         <input

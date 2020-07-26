@@ -8,13 +8,16 @@ class Container extends Component {
         search: '',
         showForm: false,
         animateForm: null,
+        editContact:[]
     };
     componentDidMount(){
         fetch('https://jsonplaceholder.ir/users/')
         .then(response => response.json())
         .then(data =>{this.setState({contacts:data})
     })
-    
+    }
+    componentWillUpdate(){
+
     }
     handelChange = event => {
         const { name, value } = event.target;
@@ -33,6 +36,24 @@ class Container extends Component {
         this.setState({ contacts: [...this.state.contacts, obj] })
         this.reorderId();
     }
+    handleEdit=(contact)=>{
+        this.toggleForm();
+        this.setState({editContact:contact})
+    }
+    updateContact=(contact)=>{
+        let tempContact = this.state.contacts;
+        tempContact.map(item => {if(item.id===contact.id){
+            item.id=contact.id
+            item.name =contact.name
+            item.username=contact.username
+            item.phone=contact.phone
+            item.email=contact.email
+            item.company=contact.company
+            item.website=contact.website
+            return item;
+        }else return item})
+        this.setState({contacts:tempContact})
+    }
     toggleForm = () => {
         if (this.state.showForm) {
             this.setState({ animateForm: false })
@@ -48,16 +69,16 @@ class Container extends Component {
     }
     render() {
         const { search } = this.state;
-        let { contacts, showForm, animateForm } = this.state;
+        let { contacts, showForm, animateForm,editContact } = this.state;
         let filtered = this.state.contacts.filter(item => item.name.toLowerCase().startsWith(this.state.search.toLowerCase()))
         return (
             <div className={`contain ${animateForm ? 'open-Form' : 'hide-form'}`}>
                 <input type="text" name="search" onChange={this.handelChange} value={search} placeholder="search" />
                 <div className="all">
-                    <Table contacts={filtered} handleDelete={this.handleDelete} showForm={this.state.showForm} toggleForm={this.toggleForm} />
+                    <Table contacts={filtered} handleDelete={this.handleDelete} handleEdit={this.handleEdit} showForm={this.state.showForm} toggleForm={this.toggleForm} />
 
                     {
-                        showForm ? <Form handleAdd={this.handleAdd} toggleForm={this.toggleForm} lastId={contacts[contacts.length - 1].id} /> : null
+                        showForm ? <Form contacts={contacts} updateContact={this.updateContact} handleAdd={this.handleAdd} editContact={editContact} toggleForm={this.toggleForm} lastId={contacts[contacts.length - 1].id} /> : null
 
                     }
                 </div>

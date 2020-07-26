@@ -10,3 +10,12 @@
     }
   }
 }
+.wrapper {
+  top: 25vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  overflow-y: scroll;
+  align-items: center;
+  width: 100vw;
+}

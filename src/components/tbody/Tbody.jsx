@@ -23,7 +23,7 @@ class Tbody extends Component {
       
   }
   render() {
-    const { contact } = this.props
+    const { contact,handleEdit } = this.props
 
     return (
 
@@ -36,7 +36,7 @@ class Tbody extends Component {
         <td>{contact.company}</td>
         <td>{contact.website}</td>
         <td className="buttons"><button type="button" onClick={()=>this.deleteItem(contact.name)} className="btn btn-danger">delete</button>
-          <button type="button" className="btn btn-primary">edit</button> </td>
+          <button type="button" onClick={()=>handleEdit(contact)} className="btn btn-primary">edit</button> </td>
       </tr>
 
     );
